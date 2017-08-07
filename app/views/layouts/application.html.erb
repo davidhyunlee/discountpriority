@@ -30,6 +30,20 @@
     <link href="/app/pages/css/pages-icons.css" rel="stylesheet" type="text/css">
     <link class="main-stylesheet" href="/app/pages/css/themes/corporate.css" rel="stylesheet" type="text/css" />
 
+    <script>
+    document.addEventListener('turbolinks:before-visit', function(e) {
+      if (e.data.url.split(window.location.href)[1].length > 0) {
+        e.preventDefault();
+        window.location.href = e.data.url;
+      }
+    });
+
+    $(document).ready(function() {
+    // Apply the plugin to the body 
+    $('body').pgNotification(options).show();
+    });
+  </script>
+
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -50,13 +64,14 @@
               <!-- START BREADCRUMB -->
                <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Shipments</li>
+                <li class="breadcrumb-item active"><%= @breadcrumb %></li>
               </ol>
               <!-- END BREADCRUMB -->
             </div>
           </div>
 
             <%= yield %>
+            <%= debug(params) if Rails.env.development? %>
 
         </div>
         <!-- END PAGE CONTENT -->

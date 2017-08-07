@@ -4,7 +4,7 @@ class UserPolicy < ApplicationPolicy
   end
 
   def new?
-    @user.role == "admin"
+    true
   end
 
   def create?

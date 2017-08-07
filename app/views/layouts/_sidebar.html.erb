@@ -60,12 +60,14 @@
         </a>
         <span class="icon-thumbnail "><i class="fa fa-question-circle"></i></span>
       </li>
+      <% if current_user.role == "admin" %>
       <li class="m-t-20">
-        <a href="#">
+        <a href="/admin">
           <span class="title">Admin</span>
         </a>
         <span class="icon-thumbnail "><i class="fa fa-question-circle"></i></span>
       </li>
+      <% end %>
     </ul> 
     <div class="clearfix"></div>
   </div>
