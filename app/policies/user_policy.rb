@@ -8,15 +8,15 @@ class UserPolicy < ApplicationPolicy
   end
 
   def create?
-    @user.role == "admin"
+    true
   end
 
   def edit?
-    @user.role == "admin"
+    @user == @record
   end
 
   def update?
-    @user.role == "admin"
+    @user == @record
   end
 
   def destroy?

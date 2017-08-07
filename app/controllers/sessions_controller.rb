@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by_email(params[:email])
+    authorize :session, :create?
 
     # If the user exists AND the password entered is correct.
     if user && user.authenticate(params[:password])
@@ -24,8 +25,9 @@ class SessionsController < ApplicationController
   end
 
   def destroy
+  	authorize :session, :destroy?
     session[:user_id] = nil
     flash[:success] = "You have been successfully logged out of your session."
-    redirect_to '/login'
+    redirect_to root_path
   end
 end

@@ -1,1 +1,19 @@
-<h3>Dashboard</h3>
+<% if !current_user.activated %>
+<div class="card card-default">
+  <div class="card-header ">
+    <div class="card-title">Account Pending Authorization
+    </div>
+    <div class="card-controls">
+      <ul>
+        <li><a data-toggle="close" class="card-close" href="#"><i class="card-icon card-icon-close"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="card-block">
+    <h3>
+				<span class="semi-bold">Status:</span> Pending</h3>
+    <p>Your account is being reviewed by our staff. Once approved, you will be able to access all of our services.</p>
+  </div>
+</div>
+<% end %>

@@ -5,7 +5,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  	begin
+    	@current_user ||= User.find(session[:user_id]) if session[:user_id]
+    rescue => e
+    	session[:user_id] = nil
+    	flash[:warning] = "Unable to restore session as the account doesn't exist."
+	end
   end
 
   helper_method :current_user

@@ -7,5 +7,6 @@ class PagesController < ApplicationController
 
   def dashboard
     authorize :page, :dashboard?
+    @breadcrumb = "Dashboard"
   end
 end

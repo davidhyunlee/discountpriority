@@ -17,11 +17,36 @@ ActiveRecord::Schema.define(version: 20170806085608) do
 
   create_table "orders", force: :cascade do |t|
     t.bigint "user_id"
+    t.string "order_no"
     t.string "sender_name"
-    t.string "sender_address"
+    t.string "sender_company"
+    t.string "sender_street_no"
+    t.string "sender_street1"
+    t.string "sender_street2"
+    t.string "sender_city"
+    t.string "sender_state"
+    t.string "sender_zip"
+    t.string "sender_country"
+    t.string "sender_phone"
+    t.string "sender_email"
+    t.string "recipient_name"
+    t.string "recipient_company"
+    t.string "recipient_street_no"
+    t.string "recipient_street1"
+    t.string "recipient_street2"
+    t.string "recipient_city"
+    t.string "recipient_state"
+    t.string "recipient_zip"
+    t.string "recipient_country"
+    t.string "recipient_phone"
+    t.string "recipient_email"
+    t.string "length"
+    t.string "width"
+    t.string "height"
     t.string "state"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["order_no"], name: "index_orders_on_order_no", unique: true
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
@@ -30,6 +55,7 @@ ActiveRecord::Schema.define(version: 20170806085608) do
     t.string "password_digest"
     t.string "api_key"
     t.string "first_name"
+    t.string "middle_name"
     t.string "last_name"
     t.string "company"
     t.string "phone_number"
@@ -41,8 +67,10 @@ ActiveRecord::Schema.define(version: 20170806085608) do
     t.string "country"
     t.boolean "activated"
     t.integer "role"
+    t.string "time_zone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
   add_foreign_key "orders", "users"

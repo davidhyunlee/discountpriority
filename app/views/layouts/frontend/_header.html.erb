@@ -51,11 +51,21 @@
             </div>
           </nav>
         </li>
+        <% if current_user %>
+        <li>
+          <a href="/dashboard" class="">Dashboard</a>
+        </li>
+        <% else %>
         <li>
           <a href="/login" class="">Log In </a>
         </li>
+        <% end %>
       </ul>
-      <a class="btn btn-sm btn-bordered btn-black block-title fs-12 hidden-sm hidden-xs" href="/users/new" data-text="Sign Up">Sign Up</a>
+      <% if current_user %>
+      <a class="btn btn-sm btn-bordered btn-black block-title fs-12 hidden-sm hidden-xs" href="/signup" data-text="Sign Up">Log Out</a>     
+      <% else %>
+      <a class="btn btn-sm btn-bordered btn-black block-title fs-12 hidden-sm hidden-xs" href="/signup" data-text="Sign Up">Sign Up</a>
+      <% end %>
     </div>
   </div>
 </nav>

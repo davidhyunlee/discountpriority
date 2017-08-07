@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :password_digest
       t.string :api_key
       t.string :first_name
+      t.string :middle_name
       t.string :last_name
       t.string :company
       t.string :phone_number
@@ -16,8 +17,11 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :country
       t.boolean :activated
       t.integer :role
+      t.string :time_zone
 
       t.timestamps
     end
+
+    add_index :users, :email, unique: true
   end
 end
