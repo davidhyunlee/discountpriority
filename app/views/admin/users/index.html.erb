@@ -1,0 +1,36 @@
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %> m-l-15 m-r-15" role="alert">
+  <p class="pull-left"><%= value %></p>
+  <button class="close" data-dismiss="alert"></button>
+  <div class="clearfix"></div>
+</div>
+<% end %>
+<div class=" container-fluid container-fixed-lg bg-white">
+  <div class="table-responsive">
+    <table class="table table-hover table-condensed" id="condensedTable">
+      <thead>
+        <tr>
+          <!-- NOTE * : Inline Style Width For Table Cell is Required as it may differ from user to user
+    Common Practice Followed
+    -->
+          <th style="width:20%">Name</th>
+          <th style="width:20%">E-mail</th>
+          <th style="width:20%">Company</th>
+          <th style="width:20%">Registered</th>
+          <th style="width:20%">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @users.each do |user| %>
+        <tr>
+          <td class="v-align-middle semi-bold"><%= link_to user.full_name_lf, admin_user_path(user) %></td>
+          <td class="v-align-middle semi-bold"><%= user.email %></td>
+          <td class="v-align-middle"><%= user.company %></td>
+          <td class="v-align-middle semi-bold"><%= user.created_at.in_time_zone("Pacific Time (US & Canada)").strftime("%D %r") %></td>
+          <td class="v-align-middle semi-bold"><%= user.activated %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

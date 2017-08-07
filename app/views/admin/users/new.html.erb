@@ -1,0 +1,123 @@
+<% flash.each do |key, value| %>
+<div class="alert alert-<%= key %> m-l-15 m-r-15" role="alert">
+  <p class="pull-left"><%= value %></p>
+  <button class="close" data-dismiss="alert"></button>
+  <div class="clearfix"></div>
+</div>
+<% end %>
+
+<!-- START CONTAINER FLUID -->
+<div class=" container-fluid container-fixed-lg bg-white">
+  <div class="row">
+    <div class="col-md-7">
+      <!-- START card -->
+      <div class="card card-transparent">
+        <div class="card-header ">
+          <div class="card-title">CREATE NEW USER
+          </div>
+        </div>
+        <div class="card-block">
+          <%= form_for @user, url: { controller: "admin/users", action: "create" }, html: {id: "form-project", autocomplete: "off", role: "form"} do |f| %>
+            <p>Basic Information</p>
+            <div class="form-group-attached">
+              <div class="form-group form-group-default required">
+                <%= f.label :company, "Company Name" %>
+                <%= f.text_field :company, class: "form-control", required: true %>
+              </div>
+              <div class="row clearfix">
+                <div class="col-md-6">
+                  <div class="form-group form-group-default required">
+                <%= f.label :first_name, "First Name" %>
+                <%= f.text_field :first_name, class: "form-control", required: true %>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group form-group-default">
+                <%= f.label :last_name, "Last Name" %>
+                <%= f.text_field :last_name, class: "form-control", required: true %>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-group-default required">
+                <%= f.label :email, "E-mail" %>
+                <%= f.email_field :email, class: "form-control", required: true %>
+              </div>
+            </div>
+            <p class="m-t-10">Address Information</p>
+            <div class="form-group-attached">
+              <div class="form-group form-group-default">
+                <%= f.label :address_1, "Address" %>
+                <%= f.text_field :address_1, class: "form-control", required: true %>
+              </div>
+              <div class="form-group form-group-default">
+                <%= f.label :address_2, "Address 2" %>
+                <%= f.text_field :address_2, class: "form-control", placeholder: "Suite 300", required: true %>
+              </div>
+              <div class="row clearfix">
+                <div class="col-md-4">
+                  <div class="form-group form-group-default required">
+                    <%= f.label :city, "City" %>
+                    <%= f.text_field :city, class: "form-control", required: true %>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group form-group-default">
+                    <%= f.label :state, "State" %>
+                    <%= f.text_field :state, class: "form-control", required: true %>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group form-group-default">
+                    <%= f.label :zip, "Zip" %>
+                    <%= f.text_field :zip, class: "form-control", required: true %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <br>
+            <%= f.submit "Create New User", class: "btn btn-success" %>
+        </div>
+      </div>
+      <!-- END card -->
+    </div>
+    <div class="col-md-5">
+      <!-- START card -->
+      <div class="card card-transparent">
+        <div class="card-header ">
+          <div class="card-title">
+          </div>
+        </div>
+      <div class="card-block">
+          <div class="form-group-attached">
+            <div class="form-group form-group-default required">
+              <%= f.label :api_key, "GoShippo API Key" %>
+              <%= f.text_field :api_key, class: "form-control", placeholder: "Enter GoShippo API Key for User", required: true %>
+            </div>
+          </div>
+          <br>
+          <label>Activated?</label>
+          <div class="radio radio-success">
+            <input type="radio" value="yes" name="optionyes" id="yes">
+            <label for="yes">Activated</label>
+            <input type="radio" checked="checked" value="no" name="optionyes" id="no">
+            <label for="no">Deactivated</label>
+          </div>
+          <p>Credentials</p>
+          <div class="form-group-attached">
+            <div class="form-group form-group-default required">
+              <%= f.label :password, "Password" %>
+              <%= f.password_field :company, class: "form-control", required: true %>
+            </div>
+            <div class="form-group form-group-default required">
+              <%= f.label :password_confirmation, "Password Confirmation" %>
+              <%= f.password_field :company, class: "form-control", required: true %>
+            </div>
+          </div>          
+          <% end %>
+        </div>
+      </div>
+      <!-- END card -->
+    </div>
+  </div>
+</div>
+<!-- END CONTAINER FLUID -->

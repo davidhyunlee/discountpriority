@@ -1,6 +1,11 @@
 class PagesController < ApplicationController
-  layout "front", only: :index
-  
+  layout "frontend/layout", only: :index
+
   def index
+    authorize :page, :index?
+  end
+
+  def dashboard
+    authorize :page, :dashboard?
   end
 end
